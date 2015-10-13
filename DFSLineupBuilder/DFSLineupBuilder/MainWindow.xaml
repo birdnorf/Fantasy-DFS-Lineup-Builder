@@ -5,6 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DFSLineupBuilder"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid/>
+        Title="DFS Lineup Builder" Height="450" Width="525">
+    <Grid>
+        <TextBox x:Name="spreadSheetTextBox" HorizontalAlignment="Left" Height="23" Margin="50,41,0,0" TextWrapping="Wrap" Text="filepath" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.678,0.293"/>
+        <Button x:Name="button" Content="Browse" HorizontalAlignment="Left" Margin="185,44,0,0" VerticalAlignment="Top" Width="75" Click="button1_Click"/>
+        <Label x:Name="label" Content="Import Spreadsheet" HorizontalAlignment="Left" Margin="50,15,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="50,86,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="65" Width="210"/>
+    </Grid>
 </Window>
