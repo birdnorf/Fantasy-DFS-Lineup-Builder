@@ -10,5 +10,9 @@ Currently Working Features:
     *Avg Score/Week  
     *Team  
     *Draft Kings Salary  
-  3. Option to get the top player (based on Avg Score/Week)
+  3. Option to get the top players at each position (based on Avg Score/Week)
+  
+In Development:
+  1. Algorithm for Building Lineups
+  2. Write Data To CSV file able to be imported into Draft Kings
   
