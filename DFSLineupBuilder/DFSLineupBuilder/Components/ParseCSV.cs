@@ -27,6 +27,7 @@ namespace DFSLineupBuilder
             List<string[]> csvLines = new List<string[]>();
             FileInfo fileInfo = new FileInfo(filename);
 
+            //parse the csv by reading each line
             using (TextFieldParser parser = new TextFieldParser(filename))
             {
                 parser.Delimiters = new string[] { "," };

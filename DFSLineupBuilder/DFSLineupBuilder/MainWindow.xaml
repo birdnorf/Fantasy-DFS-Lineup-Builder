@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DFSLineupBuilder"
         mc:Ignorable="d"
-        Title="DFS Lineup Builder" Height="450" Width="525">
-    <Grid>
-        <TextBox x:Name="spreadSheetTextBox" HorizontalAlignment="Left" Height="23" Margin="43,41,0,0" TextWrapping="Wrap" Text="filepath" VerticalAlignment="Top" Width="137" RenderTransformOrigin="0.678,0.293"/>
-        <Button x:Name="Browse" Content="Browse" HorizontalAlignment="Left" Margin="185,44,0,0" VerticalAlignment="Top" Width="75" Click="browse"/>
-        <Label x:Name="label" Content="Import Spreadsheet (.csv)" HorizontalAlignment="Left" Margin="33,15,0,0" VerticalAlignment="Top" Width="147"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="168,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="65" Width="210"/>
-        <Button x:Name="ParseCSV" Content="Parse CSV" HorizontalAlignment="Left" Margin="399,44,0,0" VerticalAlignment="Top" Width="75" Click="parseCSV"/>
-        <Button x:Name="TopPlayer" Content="Top Player" HorizontalAlignment="Left" Margin="399,136,0,0" VerticalAlignment="Top" Width="75" Click="findTopPlayer"/>
+        Title="DFS Lineup Builder" Height="500" Width="750">
+    <Grid Margin="0,0,-230,-130">
+        <TextBox x:Name="spreadSheetTextBox" HorizontalAlignment="Left" Height="23" Margin="43,41,0,0" TextWrapping="Wrap" Text="filepath" VerticalAlignment="Top" Width="182" RenderTransformOrigin="0.678,0.293"/>
+        <Button x:Name="Browse" Content="Browse" HorizontalAlignment="Left" Margin="230,44,0,0" VerticalAlignment="Top" Width="75" Click="browse"/>
+        <Label x:Name="label" Content="Import Spreadsheet (.csv)" HorizontalAlignment="Left" Margin="43,15,0,0" VerticalAlignment="Top" Width="147"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="168,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="208" Width="301"/>
+        <Button x:Name="ParseCSV" Content="Parse CSV" HorizontalAlignment="Left" Margin="532,44,0,0" VerticalAlignment="Top" Width="75" Click="parseCSV"/>
+        <Button x:Name="TopPlayer" Content="Top Players" HorizontalAlignment="Left" Margin="532,170,0,0" VerticalAlignment="Top" Width="75" Click="findTopPlayer"/>
+        <Button x:Name="BuildLineups" Content="Build Lineups" HorizontalAlignment="Left" Margin="532,367,0,0" VerticalAlignment="Top" Width="75" Click="buildLineups"/>
     </Grid>
 </Window>

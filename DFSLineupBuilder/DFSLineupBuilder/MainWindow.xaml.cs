@@ -33,7 +33,7 @@ namespace DFSLineupBuilder
     {
         string filename;
         List<Player> listOfPlayers = new List<Player>();
-        Player topPlayer = new Player();
+        List<Player> topPlayers = new List<Player>();
         public MainWindow()
         {
             InitializeComponent();
@@ -74,8 +74,13 @@ namespace DFSLineupBuilder
             if (filename == null)
                 textBlock.Text = "You suck! You JackAss!";
             else
+            {
                 // Parse Document and get list of players objects
                 listOfPlayers = Parse.parseCSV(filename);
+                textBlock.Text = "Document has been parsed! Your List of players are ready to be evaluated!";
+            }
+                
+                
         }
 
 
@@ -83,13 +88,46 @@ namespace DFSLineupBuilder
         {
             if (listOfPlayers == null)
                 textBlock.Text = "You suck! You JackAss!";
-            // Find the top player
+            // Find the top players at each position
             else
             {
-                topPlayer = Components.TopPlayer.findTopPlayer(listOfPlayers);
-                textBlock.Text = string.Format("The Top Player for the Week is: {0} Nigga!", topPlayer.name);
+                topPlayers = Components.TopPlayer.findTopPlayers(listOfPlayers);
+
+                textBlock.Text = "Here are the top players for this week: " + Environment.NewLine;
+                foreach (Player player in topPlayers)
+                {
+                    switch(player.position)
+                    {
+                        case "C":
+                            textBlock.Text += string.Format("Top Center: {0}, {1} {2}", player.name, player.team, Environment.NewLine);
+                            break;
+                        case "RW":
+                            textBlock.Text += string.Format("Top Right Wing: {0}, {1} {2}", player.name, player.team, Environment.NewLine);
+                            break;
+                        case "LW":
+                            textBlock.Text += string.Format("Top Left Wing: {0}, {1} {2}", player.name, player.team, Environment.NewLine);
+                            break;
+                        case "D":
+                            textBlock.Text += string.Format("Top Defense: {0}, {1} {2}", player.name, player.team, Environment.NewLine);
+                            break;
+                        case "G":
+                            textBlock.Text += string.Format("Top Goalie: {0}, {1} {2}", player.name, player.team, Environment.NewLine);
+                            break;
+
+                        default:
+                            Console.WriteLine("Default case");
+                            break;
+                    }
+                }
 
             }
+
+        }
+
+
+        private void buildLineups(object sender, RoutedEventArgs e)
+        {
+            textBlock.Text = "This Feature is in Development! Coming Soon!";
 
         }
 
