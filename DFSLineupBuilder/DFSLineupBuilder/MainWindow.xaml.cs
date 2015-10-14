@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+//System 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +16,13 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DFSLineupBuilder.Properties;
 using Microsoft.VisualBasic.FileIO;
+using System.IO;
 
+//My Classes
+using BL = DFSLineupBuilder.BuildLineups;
+using Parse = DFSLineupBuilder.ParseCSV;
+using Player = DFSLineupBuilder.Player;
+using TopPlayer = DFSLineupBuilder.Components.TopPlayer;
 
 namespace DFSLineupBuilder
 {
@@ -23,12 +31,16 @@ namespace DFSLineupBuilder
     /// </summary>
     public partial class MainWindow : Window
     {
+        string filename;
+        List<Player> listOfPlayers = new List<Player>();
+        Player topPlayer = new Player();
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+
+        private void browse(object sender, RoutedEventArgs e)
         {
             // Create OpenFileDialog 
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
@@ -48,37 +60,40 @@ namespace DFSLineupBuilder
             if (result == true)
             {
                 // Open document 
-                string filename = dlg.FileName;
+                filename = dlg.FileName;
                 spreadSheetTextBox.Text = filename;
-                parseCSV(filename);
+
+                
 
             }
         }
 
-        public void parseCSV(string filename)
+
+        private void parseCSV(object sender, RoutedEventArgs e)
         {
-            using (TextFieldParser parser = new TextFieldParser(filename))
-            {
-                parser.Delimiters = new string[] { "," };
-                while (true)
-                {
-                    
-                    string[] parts = parser.ReadFields();
-                    if (parts == null)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        foreach(string field in parts)
-                        {
-                            textBlock.Text += string.Format("{0}", field);
-
-                        }
-                    }
-                }
-            }
+            if (filename == null)
+                textBlock.Text = "You suck! You JackAss!";
+            else
+                // Parse Document and get list of players objects
+                listOfPlayers = Parse.parseCSV(filename);
         }
+
+
+        private void findTopPlayer(object sender, RoutedEventArgs e)
+        {
+            if (listOfPlayers == null)
+                textBlock.Text = "You suck! You JackAss!";
+            // Find the top player
+            else
+            {
+                topPlayer = Components.TopPlayer.findTopPlayer(listOfPlayers);
+                textBlock.Text = string.Format("The Top Player for the Week is: {0} Nigga!", topPlayer.name);
+
+            }
+
+        }
+
+
 
 
     }
